@@ -1,0 +1,5 @@
+useDynLib(cqrReg)
+importFrom(Rcpp, evalCpp)
+import(Rmosek)
+importFrom(Matrix,"Matrix")
+exportPattern("^[[:alpha:]]+")
