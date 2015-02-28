@@ -17,7 +17,7 @@ arma:: mat x=(xr);
 arma:: vec signw,y=(yr),comparev=arma::zeros(3);
 arma:: vec betaold,beta=(betar);
 
-int place,n=x.n_rows;
+int n=x.n_rows;
 int p=x.n_cols;
 x.insert_cols( 0, arma::ones(n) );
 double ABSTOL = 1e-4,RELTOL = 1e-2,alpha=1.4;
@@ -92,7 +92,7 @@ arma:: mat x=(xr);
 arma:: vec signw,y=(yr),comparev=arma::zeros(3);
 arma:: vec betaold,beta=(betar);
 
-int place,n=x.n_rows;
+int n=x.n_rows;
 int p=(pr);
 double ABSTOL = 1e-4,RELTOL = 1e-2,alpha=1.4;
 double rnorm,epspri,snorm,epsdual;
@@ -164,10 +164,10 @@ arma:: mat x=(xr);
 arma:: vec z,signw,y=(yr);
 arma:: vec betaold;
 
-int place,n=x.n_rows;
+int n=x.n_rows;
 int p=x.n_cols;
 x.insert_cols( 0, arma::ones(n) );
-double ABSTOL = 1e-6,RELTOL = 1e-3;
+double ABSTOL = 1e-6,RELTOL = 1e-3,alpha=1.2;
 double rnorm,epspri,snorm,epsdual;
 int iteration=1;
 arma::mat rhom=rho*arma::eye(p+1,p+1);
@@ -197,7 +197,8 @@ while (iteration<=maxit)
 
 // updata gamma
 	gammaold = gamma;
-	gamma = shrinkcpp(beta+u/rho,lambda*arma::ones<arma::vec>(p)/rho);
+        arma::vec hbeta=alpha*beta+(1-alpha)*gamma;
+	gamma = shrinkcpp(hbeta+u/rho,lambda*arma::ones<arma::vec>(p)/rho);
 
 //updata u
 	u = u +rho*(beta-gamma);
@@ -230,7 +231,7 @@ arma:: mat x=(xr);
 arma:: vec z,signw,y=(yr),r;
 arma:: vec betaold,beta=(betar);
 
-int place,n=x.n_rows;
+int n=x.n_rows;
 int p=x.n_cols;
 x.insert_cols( 0, arma::ones(n) );
 double ABSTOL = 1e-6,RELTOL = 1e-3;
@@ -290,7 +291,7 @@ arma:: mat x=(xr);
 arma:: vec z,signw,y=(yr);
 arma:: vec betaold,beta;
 
-int place,n=x.n_rows;
+//int n=x.n_rows;
 int k=x.n_cols-p;
 double ABSTOL = 1e-6,RELTOL = 1e-3;
 double rnorm,epspri,snorm,epsdual;
@@ -355,7 +356,7 @@ arma:: mat x=(xr);
 arma:: vec z,signw,y=(yr),tau=(ta),r;
 arma:: vec betaold,beta=(betar);
 
-int place,n=x.n_rows;
+int n=x.n_rows;
 double ABSTOL = 1e-6,RELTOL = 1e-3;
 double rnorm,epspri,snorm,epsdual,alpha=1.4;
 int iteration=1;

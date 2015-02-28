@@ -13,7 +13,7 @@ arma:: vec betaold,beta=(betar),quantile,u,yh,qrbeta=(betaoldr);
 arma::uvec order, index;
 
 
-int place,n=x.n_rows,k=tau.n_elem;
+int n=x.n_rows,k=tau.n_elem;
 int p=x.n_cols;
 double error=10000,epsilon=0.9999,epsilonprime;
 //toler=1e-2;

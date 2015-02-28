@@ -1,22 +1,22 @@
 QR.lasso.admm = function(X,y,tau,lambda,rho,beta,maxit)
 {
 
-if(nargs()<7){
-	maxit = 200
+if(missing(maxit)){
+maxit = 200
 }
 
 n=dim(X)[1]
 x=cbind(rep(1,n),X)
 
-if(nargs()<6){
+if(missing(beta)){
 	beta=solve(t(x)%*%x,t(x)%*%y)
 }
 
-if(nargs()<5){
+if(missing(rho)){
 	rho=0.4
 }
 
-if(nargs()<4){
+if(missing(lambda)){
 	lambda=1
 }
 

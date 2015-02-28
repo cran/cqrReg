@@ -12,7 +12,7 @@ arma:: vec W,newX,z,signw,v,r,y=(yr),E,delta;
 arma:: vec betaold,beta=(betar),qrbeta=(betaoldr);
 arma::uvec order, index;
 
-int place,n=x.n_rows;
+int n=x.n_rows;
 x.insert_cols( 0, arma::ones(n) );
 int p=x.n_cols;
 double error=10000,epsilon=0.9999,epsilonprime;

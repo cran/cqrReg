@@ -1,19 +1,24 @@
 cqr.lasso.mm =  function(X,y,tau,lambda,beta,maxit,toler)
 {
 
-if(nargs()<6){
+if(missing(toler)){
 	toler = 1e-3
+	
+}
+
+if(missing(maxit)){
 	maxit = 200
 }
+
 
 n=dim(X)[1]
 k=length(tau)
 
-if(nargs()<5){
+if(missing(beta)){
 	beta=solve(t(X)%*%X,t(X)%*%y)
 }
 
-if(nargs()<4){
+if(missing(lambda)){
 	lambda=1
 }
 

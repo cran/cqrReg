@@ -5,9 +5,14 @@ cqr.admm=  function(X,y,tau,rho,beta,maxit,toler){
 	# # lambda: penalty parameter
 	# # rho: augmented lagrangian  parameter
 	# # alpha: over-relaxation  parameter
-if(nargs()<6){
+
+if(missing(maxit)){
 	maxit = 200
-        toler=1e-2
+}
+
+if(missing(toler)){
+	toler = 1e-3
+	
 }
 
 n=dim(X)[1]
@@ -15,11 +20,11 @@ p = dim(X)[2]
 k=length(tau)
 
 	
-if(nargs()<5){
+if(missing(beta)){
 	beta=solve(t(X)%*%X,t(X)%*%y)
 }
 
-if(nargs()<4){
+if(missing(rho)){
 	rho=0.4
 }
 b=mean(y-X%*%beta)

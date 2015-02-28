@@ -2,7 +2,7 @@
 \alias{cqr.ip}
 \title{Composite Quantile Regression (cqr) use Interior Point (ip) Method}
 \description{
-   The function use the interior point method from Rmosek to solve the quantile regression problem.
+   The function use the interior point method from quantreg to solve the quantile regression problem.
 }
 \usage{
 cqr.ip(X,y,tau)
@@ -18,10 +18,13 @@ cqr.ip(X,y,tau)
   \item{b}{intercept}
 }
 \note{
-  Need to install Rmosek package from CRAN. There are series of steps need to do before installing the Rmosek package.
+  Need to install quantreg package from CRAN. 
 }
 \references{
- Kevin A.Mc, Shane Clyde L.Monma and David Shanno.(1989) An Implementation of a Primal-Dual Interior Point Method for Linear Programming. \emph{Journal on Computing ISSN} 1091--9856.
+Koenker, R. and S. Portnoy (1997).
+The Gaussian Hare and the Laplacian Tortoise:
+Computability of squared-error vs. absolute-error estimators, with discussion,
+\emph{Statistical Science}, \bold{12}, 279-300.
 
 Hui Zou and Ming Yuan(2008). Composite Quantile Regression and the Oracle Model Selection Theory, \emph{The Annals of Statistics}, \bold{36}, Number 3, Page 1108--1126.
 }
@@ -36,7 +39,8 @@ beta=matrix(beta,p,1)
 y=x\%*\%beta-matrix(rnorm(n,0.1,1),n,1)
 tau=1:5/6
 # x is 1000*10 matrix, y is 1000*1 vector, beta is 10*1 vector
-cqr.ip(x,y,tau)
+#you should install quantreg first to run following command
+#cqr.ip(x,y,tau)
 }
 
 \keyword{IP}

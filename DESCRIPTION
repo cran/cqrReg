@@ -1,16 +1,15 @@
 Package: cqrReg
 Type: Package
 Title: Quantile, Composite Quantile Regression and Regularized Versions
-Version: 1.0
-Date: 2014-11-07
+Version: 1.1
+Date: 2015-02-28
 Author: Jueyu Gao & Linglong Kong 
 Maintainer: Jueyu Gao <jueyu@ualberta.ca>
 Description: Estimate quantile regression(QR) and composite quantile regression (cqr) and with adaptive lasso penalty using interior point (IP), majorize and minimize(MM), coordinate descent (CD), and alternating direction method of multipliers algorithms(ADMM).
 License: GPL (>= 2)
-Depends: Matrix,Rmosek
-Imports: Rcpp (>= 0.10.0)
+Depends: Rcpp (>= 0.10.0),quantreg,R (>= 2.6)
 LinkingTo: Rcpp,RcppArmadillo
-Packaged: 2014-11-27 00:30:38 UTC; billy
 NeedsCompilation: yes
+Packaged: 2015-02-28 21:04:41 UTC; billy
 Repository: CRAN
-Date/Publication: 2014-11-27 07:39:36
+Date/Publication: 2015-03-01 08:21:03

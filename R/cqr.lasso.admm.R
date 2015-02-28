@@ -5,20 +5,19 @@ cqr.lasso.admm=  function(X,y,tau,lambda,rho,beta,maxit){
 	# # lambda: penalty parameter
 	# # rho: augmented lagrangian  parameter
 	# # alpha: over-relaxation  parameter
-if(nargs()<7){
+if(missing(maxit)){
 	maxit = 200
 }
 
-
-if(nargs()<6){
-	beta=solve(t(X)%*%X,t(X)%*%y)
-}
-
-if(nargs()<5){
+if(missing(rho)){
 	rho=0.4
 }
 
-if(nargs()<4){
+if(missing(beta)){
+	beta=solve(t(X)%*%X,t(X)%*%y)
+}
+
+if(missing(lambda)){
 	lambda=1
 }
 

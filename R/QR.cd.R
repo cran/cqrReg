@@ -1,13 +1,18 @@
 QR.cd = function(X, y, tau, beta, maxit, toler)
 {
 
-if(nargs()<5){
+if(missing(toler)){
 	toler = 1e-3
-	maxit = 200
+	
+}
+
+if(missing(maxit))
+{
+maxit = 200
 }
 
 
-if(nargs()<4){
+if(missing(beta)){
 	beta=solve(t(X)%*%X,t(X)%*%y)
 }
 

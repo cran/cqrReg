@@ -1,19 +1,23 @@
-QR.admm = function(X, y, tau,rho,beta, maxit, toler)
+QR.admm = function(X, y, tau,rho,beta, maxit,toler)
 {
 
-if(nargs()<7){
-	toler = 1e-2
+if(missing(maxit)){
 	maxit = 200
+}
+
+if(missing(toler)){
+	toler = 1e-3
+	
 }
 
 n=dim(X)[1]
 x=cbind(rep(1,n),X)
 
-if(nargs()<5){
+if(missing(beta)){
 	beta=solve(t(x)%*%x,t(x)%*%y)
 }
 
-if(nargs()<4){
+if(missing(rho)){
 	rho=0.4
 }
 

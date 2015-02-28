@@ -13,7 +13,7 @@ arma:: vec betaold,beta=(betar),beta0=(betaoldr);
 arma::uvec order, index;
 
 int place,n=x.n_rows;
-int p=x.n_cols,flag;
+int p=x.n_cols;
 double error=10000;
 //toler=0.005;
 int iteration=1;
