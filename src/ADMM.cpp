@@ -1,5 +1,5 @@
 #include "RcppArmadillo.h"
-
+using namespace std;
 
 arma::vec shrinkcpp(arma::vec u, arma::vec v)
 {	
@@ -61,8 +61,8 @@ while (iteration<=maxit)
 	comparev(1)=sqrt(accu(square(z)));
 	comparev(2)=sqrt(accu(square(y)));
 		
-	epspri = sqrt(n)*ABSTOL + RELTOL*arma::max(comparev);	
-	epsdual = sqrt(p+1)*ABSTOL + RELTOL*sqrt(accu(square(x.t()*u)));
+	epspri = sqrt(n*1.0)*ABSTOL + RELTOL*arma::max(comparev);	
+	epsdual = sqrt((p+1)*1.0)*ABSTOL + RELTOL*sqrt(accu(square(x.t()*u)));
 
 
 	if (rnorm < epspri && snorm < epsdual) 
@@ -70,7 +70,7 @@ while (iteration<=maxit)
 			 iteration = maxit+1;
 		} else {iteration = iteration + 1;}
 
-	if (iteration>2&& accu(abs(betaold-betai))<toler&&rnorm < epspri)
+	if (iteration>2&& arma::accu(arma::abs(betaold-betai))<toler&&rnorm < epspri)
 	{ 
 
 		iteration=maxit+1;
@@ -135,8 +135,8 @@ while (iteration<=maxit)
 	comparev(1)=sqrt(accu(square(z)));
 	comparev(2)=sqrt(accu(square(y)));
 		
-	epspri = sqrt(n)*ABSTOL + RELTOL*arma::max(comparev);	
-	epsdual = sqrt(p+k)*ABSTOL + RELTOL*sqrt(accu(square(xt*u)));
+	epspri = sqrt(n*1.0)*ABSTOL + RELTOL*arma::max(comparev);	
+	epsdual = sqrt((p+k)*1.0)*ABSTOL + RELTOL*sqrt(accu(square(xt*u)));
 
 
 	if (rnorm < epspri && snorm < epsdual) 
@@ -144,7 +144,7 @@ while (iteration<=maxit)
 			 iteration = maxit+1;
 		} else {iteration = iteration + 1;}
 
-	if (iteration>2&& accu(abs(betaold-betai))<toler)
+	if (iteration>2&& accu(arma::abs(betaold-betai))<toler)
 	{ 
 		iteration=maxit+1;
 	}
@@ -207,8 +207,8 @@ while (iteration<=maxit)
 	rnorm = sqrt(accu(square(beta-gamma)));
 	snorm = sqrt(accu(square(-rho*(gamma-gammaold))));
 		
-	epspri = sqrt(p)*ABSTOL + RELTOL*std::max(sqrt(accu(square(beta))),sqrt(accu(square(-gamma))));	
-	epsdual = sqrt(p)*ABSTOL + RELTOL*sqrt(accu(square(u)));
+	epspri = sqrt(p*1.0)*ABSTOL + RELTOL*std::max(sqrt(accu(square(beta))),sqrt(accu(square(-gamma))));	
+	epsdual = sqrt(p*1.0)*ABSTOL + RELTOL*sqrt(accu(square(u)));
 
 
 	if (rnorm < epspri && snorm < epsdual) 
@@ -268,8 +268,8 @@ while (iteration<=maxit)
         comparev(0)=sqrt(accu(square(x.cols(1,p)*beta)));
 	comparev(1)=sqrt(accu(square(-r)));
 	comparev(2)=sqrt(accu(square(y-betah(0))));	
-	epspri = sqrt(n)*ABSTOL + RELTOL*arma::max(comparev);	
-	epsdual = sqrt(n)*ABSTOL + RELTOL*sqrt(accu(square(u)));
+	epspri = sqrt(n*1.0)*ABSTOL + RELTOL*arma::max(comparev);	
+	epsdual = sqrt(n*1.0)*ABSTOL + RELTOL*sqrt(accu(square(u)));
 
 
 	if (rnorm < epspri && snorm < epsdual) 
@@ -332,8 +332,8 @@ while (iteration<=maxit)
 	rnorm = sqrt(accu(square(beta-gamma)));
 	snorm = sqrt(accu(square(-rho*(gamma-gammaold))));
 		
-	epspri = sqrt(p)*ABSTOL + RELTOL*std::max(sqrt(accu(square(beta))),sqrt(accu(square(-gamma))));	
-	epsdual = sqrt(p)*ABSTOL + RELTOL*sqrt(accu(square(u)));
+	epspri = sqrt(p*1.0)*ABSTOL + RELTOL*std::max(sqrt(accu(square(beta))),sqrt(accu(square(-gamma))));	
+	epsdual = sqrt(p*1.0)*ABSTOL + RELTOL*sqrt(accu(square(u)));
 
 
 	if (rnorm < epspri && snorm < epsdual) 
@@ -401,8 +401,8 @@ while (iteration<=maxit)
 
 	comparev(2)=sqrt(accu(square(y-b)));
 	
-	epspri = sqrt(n)*ABSTOL + RELTOL*arma::max(comparev);	
-	epsdual = sqrt(n)*ABSTOL + RELTOL*sqrt(accu(square(u)));
+	epspri = sqrt(n*1.0)*ABSTOL + RELTOL*arma::max(comparev);	
+	epsdual = sqrt(n*1.0)*ABSTOL + RELTOL*sqrt(accu(square(u)));
 
 
 	if (rnorm < epspri && snorm < epsdual) 

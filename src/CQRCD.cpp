@@ -31,7 +31,7 @@ newX.zeros(n,k);
 while (iteration<=maxit&& error>toler)
 {
   betaold=beta;
-  uv=sort(y-x*beta);
+  uv=arma::sort(y-x*beta);
 
   // u is vec of the quantiles of given vector
   quantile=(n-1)*tau-floor((n-1)*tau);
@@ -44,7 +44,7 @@ while (iteration<=maxit&& error>toler)
 
 	for (int i=0;i<k;i++)
   	{       r.col(i)=y-u(i)-yh;    
-  		signw.col(i)=(1-sign(r.col(i)))/2*(1-tau(i))+(sign(r.col(i))+1)*tau(i)/2;	 
+  		signw.col(i)=(1-arma::sign(r.col(i)))/2*(1-tau(i))+(arma::sign(r.col(i))+1)*tau(i)/2;	 
 	}
 
 	for (int j=0;j<p;j++)
@@ -55,12 +55,12 @@ while (iteration<=maxit&& error>toler)
 			z.col(i)=(r.col(i)+xbeta)/x.col(j);	
 			newX.col(i)=x.col(j)%signw.col(i);	
 		}
-		vz=vectorise(z);	
-		order=sort_index(vz);
+		vz=arma::vectorise(z);	
+		order=arma::sort_index(vz);
 		sortz=vz(order);
-                vnewX=vectorise(newX)	;			
-		w=abs(vnewX(order));		
-                index=find(cumsum(w)>(sum(w)/2),1,"first");
+                vnewX=arma::vectorise(newX)	;			
+		w=arma::abs(vnewX(order));		
+                index=arma::find(cumsum(w)>(sum(w)/2),1,"first");
                 place=int(index(0));
 		beta(j)=sortz(place);
 		

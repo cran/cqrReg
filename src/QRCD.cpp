@@ -21,30 +21,30 @@ int iteration=1;
 while (iteration<=maxit&& error>toler)
 {
   betaold=beta;
-  uv=sort(y-x*beta);
+  uv=arma::sort(y-x*beta);
 
   // u is the quantile of given vector
   quantile=(n-1)*tau-floor((n-1)*tau);
   u=quantile*uv(ceil((n-1)*tau))+(1-quantile)*uv(floor((n-1)*tau));
 		
   r=y-u-x*beta;
-  signw=(1-sign(r))/2*(1-tau)+(sign(r)+1)*tau/2;
+  signw=(1-arma::sign(r))/2*(1-tau)+(arma::sign(r)+1)*tau/2;
  		 
 
 	for (int j=0;j<p;j++)
 	{
 		z=(r+beta(j)*x.col(j))/x.col(j);		
-		order=sort_index(z);
+		order=arma::sort_index(z);
 		sortz=z(order);	
 		newX=x.col(j)%signw;		
-		w=abs(newX(order));		
-                index=find(cumsum(w)>(sum(w)/2),1,"first");
+		w=arma::abs(newX(order));		
+                index=arma::find(cumsum(w)>(sum(w)/2),1,"first");
                 place=int(index(0));
 		beta(j)=sortz(place);
 		
 	}
 
-error=sum(abs(beta-betaold));
+error=arma::sum(arma::abs(beta-betaold));
 iteration++;
 }
 

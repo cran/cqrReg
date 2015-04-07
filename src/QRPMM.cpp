@@ -29,15 +29,15 @@ while (iteration<=maxit&& error>toler)
 	betaold=beta;
  
 	r=y-x*beta;
-	v=1-2*tau-r/(abs(r)+epsilon);
-	E=lamda*abs(beta)/beta/(epsilonprime+abs(beta))/qrbeta/qrbeta;
+	v=1-2*tau-r/(arma::abs(r)+epsilon);
+	E=lamda*arma::abs(beta)/beta/(epsilonprime+arma::abs(beta))/qrbeta/qrbeta;
         E(0)=0;
 	W=1/(epsilon+abs(r));
 
 	for (int i=0;i<n;i++)
 		{	product.col(i)=xt.col(i)*W(i);}
 
- 	delta=solve(product*x-diagmat(E),xt*v-E%beta); 
+ 	delta=arma::solve(product*x-diagmat(E),xt*v-E%beta); 
 	beta=beta-delta;
 
 

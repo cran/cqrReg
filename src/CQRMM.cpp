@@ -31,7 +31,7 @@ while (iteration<=maxit&& error>toler)
 {
   betaold=beta;
   yh=x*beta;
-  uv=sort(y-yh);
+  uv=arma::sort(y-yh);
 
   // u is vec of the quantiles of given vector
   quantile=(n-1)*tau-floor((n-1)*tau);
@@ -47,14 +47,14 @@ while (iteration<=maxit&& error>toler)
 	}
         denominator=1/(abs(r)+epsilon);
 	W=sum(denominator,1);
-        v=k-2*sum(tau)-sum(r%denominator,1);
+        v=k-2*arma::sum(tau)-arma::sum(r%denominator,1);
         for (int i=0;i<n;i++)
 		{	product.col(i)=xt.col(i)*W(i);}
 
- 	delta=solve(product*x,xt*v); 
+ 	delta=arma::solve(product*x,xt*v); 
   
 	beta=beta-delta;
-error=sum(abs(delta));
+error=arma::sum(arma::abs(delta));
 iteration++;
 }
 

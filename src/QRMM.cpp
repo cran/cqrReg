@@ -26,14 +26,14 @@ while (iteration<=maxit&& error>toler)
 	betaold=beta;
  
 	r=y-x*beta;
-	v=1-2*tau-r/(abs(r)+epsilon);
+	v=1-2*tau-r/(arma::abs(r)+epsilon);
 
-	W=1/(epsilon+abs(r));
+	W=1/(epsilon+arma::abs(r));
 
 	for (int i=0;i<n;i++)
 		{	product.col(i)=xt.col(i)*W(i);}
 
- 	delta=solve(product*x,xt*v); 
+ 	delta=arma::solve(product*x,xt*v); 
 	beta=beta-delta;
 
 
